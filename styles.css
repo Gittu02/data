@@ -8,3 +8,7 @@ a{
   margin-left: 20px;
   
 }
+a:hover{
+  color: #26b7d5;
+  background: 3px solid aqua;
+}
