@@ -2,19 +2,7 @@
   text-decoration: none;
 
 }
-.nu{
-  text-decoration: none;
-  color: aqua;
-  margin-left: 16px;
-  border: 1px solid #26b7d5 ;
-  border-radius: 4px;
-}
-.nu:hover{
-  color: #26b7d5;
-  border: 1px solid aqua;
-  border-radius: 4px;
-  
-}
+
 .2{
   color: #26b7d500;
 }
