@@ -5,10 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
 <!-- <link rel="stylesheet" href="styles.css"> -->
-<!--     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
-  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script> -->
-  <script>
+
 $('.collapse').collapse(#demo)
 
 </script>
@@ -27,14 +24,14 @@ choose any one num
     <a href="8.html">8</a>
     <a href="9.html">9</a>
     <a href="10.html">10</a> -->
-
+<!-- 
       <button type="button" class="btn btn-info" data-toggle="collapse" data-target="#demo">1</button>
   <div id="demo" class="collapse">
   donkey
-  </div>
+  </div> -->
     
    
-<!-- <button type="button" class="collapsible" class="nu">1</button>
+<button type="button" class="collapsible" class="nu">1</button>
 <div class="content">
   donkey
   <audio autoplay>
@@ -46,7 +43,7 @@ choose any one num
 <div class="content">
   
   monkey
-</div> -->
+</div>
   </div><br>
  <div>
   
@@ -79,6 +76,21 @@ choose any one num
   <br>
   <br>
   <br></div>
+  <script>
+var coll = document.getElementsByClassName("collapsible");
+var i;
+for (i = 0; i < coll.length; i++) {
+  coll[i].addEventListener("click", function() {
+    this.classList.toggle("active");
+    var content = this.nextElementSibling;
+    if (content.style.display === "block") {
+      content.style.display = "none";
+    } else {
+      content.style.display = "block";
+    }
+  });
+}
+</script>
 
   <pooter>&copy; 2024 made by md einstien</pooter>
 </body>
