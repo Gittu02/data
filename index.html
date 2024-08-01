@@ -21,11 +21,10 @@ choose any one num
     <a href="9.html">9</a>
     <a href="10.html">10</a> -->
     
-    <button class="btn" data-toggle="collapse" data-target="#demo" class="nu">1</button>
-
-<div id="demo" class="collapse">
-donkey</div>
-
+<button type="button" class="collapsible">Open Collapsible</button>
+<div class="content">
+  donkey
+</div>
   </div><br>
  <div>
   
@@ -58,9 +57,21 @@ donkey</div>
   <br>
   <br>
   <br></div>
-  <script>
-$('.collapse').collapse()
+<script>
+var coll = document.getElementsByClassName("collapsible");
+var i;
 
+for (i = 0; i < coll.length; i++) {
+  coll[i].addEventListener("click", function() {
+    this.classList.toggle("active");
+    var content = this.nextElementSibling;
+    if (content.style.display === "block") {
+      content.style.display = "none";
+    } else {
+      content.style.display = "block";
+    }
+  });
+}
 </script>
   <pooter>&copy; 2024 made by md einstien</pooter>
 </body>
