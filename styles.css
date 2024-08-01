@@ -2,14 +2,14 @@
   text-decoration: none;
 
 }
-a,.nu{
+.nu{
   text-decoration: none;
   color: aqua;
   margin-left: 16px;
   border: 1px solid #26b7d5 ;
   border-radius: 4px;
 }
-a,.nu:hover{
+.nu:hover{
   color: #26b7d5;
   border: 1px solid aqua;
   border-radius: 4px;
