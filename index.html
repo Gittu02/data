@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Data Management - Home</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <nav id="mySidenav" class="sidenav">
+        <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">×</a>
+        <a href="data.html">Stored Data</a>
+        <a href="index.html">Data Entry</a>
+    </nav>
+    <div id="main">
+        <span style="font-size:30px;cursor:pointer" onclick="openNav()">☰ Menu</span>
+        <h1>Data Management</h1>
+        <form id="dataForm">
+            <label for="pdfFile">PDF File:</label>
+            <input type="file" id="pdfFile" name="pdfFile" accept="application/pdf" required><br><br>
+            
+            <label for="name">Name:</label>
+            <input type="text" id="name" name="name" required><br><br>
+            
+            <label for="enrollmentNumber">Enrollment Number:</label>
+            <input type="text" id="enrollmentNumber" name="enrollmentNumber" required><br><br>
+            
+            <label for="status">Status:</label>
+            <select id="status" name="status">
+                <option value="process">Process</option>
+                <option value="generated">Generated</option>
+                <option value="rejected">Rejected</option>
+            </select><br><br>
+            
+            <button type="submit">Submit</button>
+        </form>
+    </div>
+    
+    <script src="script.js"></script>
+</body>
+</html>

@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Stored Data</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <nav id="mySidenav" class="sidenav">
+        <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">×</a>
+        <a href="data.html">Stored Data</a>
+        <a href="index.html">Data Entry</a>
+    </nav>
+    <div id="main">
+        <span style="font-size:30px;cursor:pointer" onclick="openNav()">☰ Menu</span>
+        <h1>Stored Data</h1>
+        
+        <div id="filterSection">
+            <input type="text" id="searchBox" placeholder="Search by name or enrollment number">
+            <select id="filterOptions" onchange="filterData()">
+                <option value="all">All</option>
+                <option value="process">Process</option>
+                <option value="generated">Generated</option>
+                <option value="rejected">Rejected</option>
+            </select>
+            <input type="date" id="startDate" onchange="filterData()">
+            <input type="date" id="endDate" onchange="filterData()">
+            <button onclick="resetDateFilter()">Reset Date Filter</button>
+            <button onclick="downloadAllData()">Download All Data</button>
+        </div>
+        
+        <div id="dataContainer"></div>
+    </div>
+    
+    <script src="script.js"></script>
+</body>
+</html>
