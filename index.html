@@ -36,6 +36,29 @@
         </form>
     </div>
     
-    <script src="script.js"></script>
+    <script>
+        document.getElementById('dataForm').addEventListener('submit', async function(event) {
+            event.preventDefault();
+
+            const formData = new FormData();
+            formData.append('pdfFile', document.getElementById('pdfFile').files[0]);
+            formData.append('name', document.getElementById('name').value);
+            formData.append('enrollmentNumber', document.getElementById('enrollmentNumber').value);
+            formData.append('status', document.getElementById('status').value);
+
+            // Send the form data to the server via fetch
+            const response = await fetch('/submit', {
+                method: 'POST',
+                body: formData
+            });
+
+            const result = await response.json();
+            if (result.message === 'Data submitted successfully') {
+                window.location.href = 'data.html'; // Redirect to data page
+            } else {
+                alert('Error in submission');
+            }
+        });
+    </script>
 </body>
 </html>
