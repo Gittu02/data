@@ -27,12 +27,57 @@
             <input type="date" id="startDate" onchange="filterData()">
             <input type="date" id="endDate" onchange="filterData()">
             <button onclick="resetDateFilter()">Reset Date Filter</button>
-            <button onclick="downloadAllData()">Download All Data</button>
         </div>
         
         <div id="dataContainer"></div>
     </div>
-    
-    <script src="script.js"></script>
+
+    <script>
+        async function fetchData() {
+            const response = await fetch('/data');
+            const data = await response.json();
+            displayData(data);
+        }
+
+        function displayData(data, filter = 'all', startDate = null, endDate = null, searchQuery = '') {
+            const dataContainer = document.getElementById('dataContainer');
+            dataContainer.innerHTML = '';
+            searchQuery = searchQuery.toLowerCase();
+
+            data.forEach(item => {
+                const dataDate = new Date(item.date);
+                const start = startDate ? new Date(startDate) : null;
+                const end = endDate ? new Date(endDate) : null;
+
+                // Filter by status, date, and search query
+                if ((filter === 'all' || item.status === filter) &&
+                    (!start || dataDate >= start) &&
+                    (!end || dataDate <= end) &&
+                    (item.name.toLowerCase().includes(searchQuery) || item.enrollmentNumber.toLowerCase().includes(searchQuery))) {
+
+                    const dataItem = document.createElement('div');
+                    dataItem.className = 'data-item';
+                    dataItem.innerHTML = `
+                        <p>PDF File: <a href="/download/${item.pdfFile}" download="${item.pdfFile}">Download PDF</a></p>
+                        <p>Name: ${item.name}</p>
+                        <p>Enrollment Number: ${item.enrollmentNumber}</p>
+                        <p>Status: ${item.status}</p>
+                        <p>Date: ${item.date}</p>
+                    `;
+                    dataContainer.appendChild(dataItem);
+                }
+            });
+        }
+
+        function filterData() {
+            const filter = document.getElementById('filterOptions').value;
+            const startDate = document.getElementById('startDate').value;
+            const endDate = document.getElementById('endDate').value;
+            const searchQuery = document.getElementById('searchBox').value;
+            fetchData().then(data => displayData(data, filter, startDate, endDate, searchQuery));
+        }
+
+        window.onload = fetchData; // Fetch data on page load
+    </script>
 </body>
 </html>
