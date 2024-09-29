@@ -136,22 +136,3 @@ window.onload = function() {
         displayData();
     }
 };
-document.getElementById('searchBox').addEventListener('input', function () {
-    searchData();
-});
-
-function searchData() {
-    const searchValue = document.getElementById('searchBox').value.toLowerCase();
-    const dataItems = document.querySelectorAll('#dataContainer .dataItem');
-
-    dataItems.forEach(function(item) {
-        const name = item.querySelector('.name').innerText.toLowerCase();
-        const enrollmentNumber = item.querySelector('.enrollment').innerText.toLowerCase();
-
-        if (name.includes(searchValue) || enrollmentNumber.includes(searchValue)) {
-            item.style.display = ''; // Show item if it matches the search
-        } else {
-            item.style.display = 'none'; // Hide item if it doesn't match
-        }
-    });
-}
