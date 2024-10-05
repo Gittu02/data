@@ -35,7 +35,39 @@
             <button type="submit">Submit</button>
         </form>
     </div>
-    
-    <script src="script.js"></script> <!-- Load the external JavaScript file -->
+
+    <script>
+        document.getElementById('dataForm').addEventListener('submit', function(event) {
+            event.preventDefault();
+
+            const pdfFile = document.getElementById('pdfFile').files[0];
+            const name = document.getElementById('name').value;
+            const enrollmentNumber = document.getElementById('enrollmentNumber').value;
+            const status = document.getElementById('status').value;
+            const token = localStorage.getItem('token'); // Get the stored token for authentication
+
+            const formData = new FormData();
+            formData.append('pdfFile', pdfFile);
+            formData.append('name', name);
+            formData.append('enrollmentNumber', enrollmentNumber);
+            formData.append('status', status);
+
+            fetch('https://your-backend-url.com/api/data', {
+                method: 'POST',
+                headers: {
+                    'Authorization': `Bearer ${token}`
+                },
+                body: formData
+            })
+            .then(response => response.json())
+            .then(data => {
+                if (data.success) {
+                    window.location.href = 'data.html'; // Redirect to the stored data page
+                } else {
+                    alert('Error submitting data');
+                }
+            });
+        });
+    </script>
 </body>
 </html>
